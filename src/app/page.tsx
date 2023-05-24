@@ -1,113 +1,96 @@
-import Image from 'next/image'
+import Card from '../../components/Card';
 
 export default function Home() {
+
+  type CardData = {
+    status: 'countdown' | 'archive' | 'ship';
+    countdownNumber?: number;
+    title: string;
+    description: string;
+    tags: string[];
+  };
+
+  const cardsData: CardData[] = [
+    {
+      status: 'countdown',
+      countdownNumber: 5,
+      title: 'Card Title 1',
+      description: 'This is a card description. It can be multiline.',
+      tags: ['tag1', 'tag2', 'tag3'],
+    },
+    {
+      status: 'countdown',
+      countdownNumber: 3,
+      title: 'Card Title 2',
+      description: 'Another card description. This is also multiline.',
+      tags: ['tag4', 'tag5'],
+    },
+    {
+      status: 'archive',
+      title: 'Card Title 3',
+      description: 'This card is archived.',
+      tags: ['tag6'],
+    },
+    {
+      status: 'ship',
+      title: 'Card Title 4',
+      description: 'This card is shipped.',
+      tags: ['tag1', 'tag7', 'tag8'],
+    },
+    {
+      status: 'countdown',
+      countdownNumber: 7,
+      title: 'Card Title 5',
+      description: 'This card has a countdown of 7.',
+      tags: ['tag2', 'tag8'],
+    },
+    {
+      status: 'archive',
+      title: 'Card Title 6',
+      description: 'Another archived card.',
+      tags: ['tag9', 'tag10'],
+    },
+    {
+      status: 'ship',
+      title: 'Card Title 7',
+      description: 'This card is also shipped.',
+      tags: ['tag5', 'tag10'],
+    },
+    {
+      status: 'countdown',
+      countdownNumber: 1,
+      title: 'Card Title 8',
+      description: 'This card has a countdown of 1.',
+      tags: ['tag4', 'tag7'],
+    },
+    {
+      status: 'archive',
+      title: 'Card Title 9',
+      description: 'This is the last card, and it is archived.',
+      tags: ['tag1', 'tag6', 'tag8'],
+    },
+  ];
+  
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main className="flex flex-col items-center justify-between p-6 sm:p-12 md:p-16 lg:p-24">
+      <header className="w-full flex items-center justify-center mb-4">
+        <h1 className="text-5xl font-bold text-center text-fat-ideas mr-4">Fat Ideas</h1>
+        <button className="bg-fat-ideas text-white px-4 py-2 rounded text-4xl">New</button>
+      </header>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-3 mt-12">
+        {cardsData.map((card, index) => (
+          <Card
+            key={index}
+            status={card.status}
+            countdownNumber={card.countdownNumber}
+            title={card.title}
+            description={card.description}
+            tags={card.tags}
+          />
+        ))}
       </div>
     </main>
-  )
+  );
 }
