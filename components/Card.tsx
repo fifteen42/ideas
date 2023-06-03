@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 type CardProps = {
-  status: 'countdown' | 'archive' | 'ship';
+  status: "countdown" | "archive" | "ship";
   countdownNumber?: number;
   title: string;
   description: string;
@@ -17,43 +17,45 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const getStatusContent = () => {
     switch (status) {
-      case 'countdown':
+      case "countdown":
         return (
           <div
             className="w-14 h-14 rounded-full flex items-center justify-center bg-fat-ideas"
             style={{
-              backgroundColor: 'transparent',
+              backgroundColor: "transparent",
               borderWidth: 2,
-              borderColor: '#2bbc8a',
-              borderStyle: 'solid',
+              borderColor: "#2bbc8a",
+              borderStyle: "solid",
             }}
           >
-            <span className="text-2xl font-bold text-fat-ideas">{countdownNumber}</span>
+            <span className="text-2xl font-bold text-fat-ideas">
+              {countdownNumber}
+            </span>
           </div>
         );
-      case 'archive':
+      case "archive":
         return (
           <div
             className="w-14 h-14 rounded-full flex items-center justify-center bg-gray-400"
             style={{
-              backgroundColor: 'transparent',
+              backgroundColor: "transparent",
               borderWidth: 2,
-              borderColor: '#808080',
-              borderStyle: 'solid',
+              borderColor: "#808080",
+              borderStyle: "solid",
             }}
           >
             📦
           </div>
         );
-      case 'ship':
+      case "ship":
         return (
           <div
             className="w-14 h-14 rounded-full flex items-center justify-center"
             style={{
-              backgroundColor: 'transparent',
+              backgroundColor: "transparent",
               borderWidth: 2,
-              borderColor: '#f2c57c',
-              borderStyle: 'solid',
+              borderColor: "#f2c57c",
+              borderStyle: "solid",
             }}
           >
             🚀
@@ -63,30 +65,24 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div
-      className="w-64 h-32 p-4 border-2 border-black rounded-md shadow-md flex items-start justify-between"
-    >
-      <div className="w-14">
-        {getStatusContent()}
-      </div>
-      <div className="w-32 flex flex-col justify-between ml-4 flex-grow">
+    <div className="w-80 h-40 p-4 border-2 border-slate-400 shadow-md rounded-md flex items-center justify-start">  
+      <div className="w-14 ml-4 ">{getStatusContent()}</div>
+      <div className="w-full flex flex-col justify-between ml-3 items-start">
         <h3 className="font-semibold">{title}</h3>
-        <p className="text-sm text-gray-600">{description}</p>
-        <div className="space-x-2 space-y-2">
+        <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
+        <div className="space-x-2 space-y-2 mt-2">
           {tags.map((tag, index) => (
             <span
               key={index}
               className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded"
             >
-              {/* add spaces behind tags and bold tags */}
-              #{tag}{' '}
+              {/* add spaces behind tags and bold tags */}#{tag}{" "}
             </span>
           ))}
         </div>
       </div>
     </div>
-
-  );  
+  );
 };
 
 export default Card;
