@@ -104,7 +104,37 @@ export default function Home() {
         ))}
       </div>
 
- 
+      <div className="w-80 h-32 p-4 border-2 border-slate-400 shadow-md rounded-md flex items-center justify-start mt-9" >
+        <div className="w-14 ml-4 ">
+          <div
+            className="w-14 h-14 rounded-full flex items-center justify-center bg-fat-ideas"
+            style={{
+              backgroundColor: "transparent",
+              borderWidth: 2,
+              borderColor: "#2bbc8a",
+              borderStyle: "solid",
+            }}
+          >
+            <span className="text-2xl font-bold text-fat-ideas">
+              9
+            </span>
+          </div>
+        </div>
+        <div className="w-full flex flex-col justify-start items-start ml-3">
+            <h3 className="font-semibold">{"试试呗"}</h3>
+            <p className="text-sm text-gray-600 w-48 line-clamp-2">{"试试呗,试试呗,试试呗,试试呗,试试呗,试试呗,试试呗,试试呗"}</p>
+            <div className="space-x-2 space-y-2 mt-2">
+              {["试试","就","试试"].map((tag, index) => (
+                <span
+                  key={index}
+                  className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded"
+                >
+                  {/* add spaces behind tags and bold tags */}#{tag}{" "}
+                </span>
+              ))}
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
