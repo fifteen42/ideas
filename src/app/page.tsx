@@ -104,7 +104,7 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="w-80 h-32 p-4 border-2 border-slate-400 shadow-md rounded-md flex items-center justify-start mt-9" >
+      {/* <div className="w-80 h-32 p-4 border-2 border-slate-400 shadow-md rounded-md flex items-center justify-start mt-9" >
         <div className="w-14 ml-4 ">
           <div
             className="w-14 h-14 rounded-full flex items-center justify-center bg-fat-ideas"
@@ -129,12 +129,12 @@ export default function Home() {
                   key={index}
                   className="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded"
                 >
-                  {/* add spaces behind tags and bold tags */}#{tag}{" "}
+                  #{tag}{" "}
                 </span>
               ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
