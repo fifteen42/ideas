@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import Card from "../../components/Card";
-import NewCardModal from "../../components/NewCardModal";
+import Modal from "../../components/Modal";
 
 export default function Home() {
-
+  // modal open/close
   const [open, setOpen] = useState(false);
   const handleToggle = () => setOpen((prev) => !prev);
 
@@ -53,7 +53,8 @@ export default function Home() {
     {
       status: "archive",
       title: "Card Title 6",
-      description: "Another archived card.Another archived card. Another archived card.Another archived card.",
+      description:
+        "Another archived card.Another archived card. Another archived card.Another archived card.",
       tags: ["tag9", "tag10"],
     },
     {
@@ -83,13 +84,47 @@ export default function Home() {
         <h1 className="text-5xl font-bold text-center text-fat-ideas mr-4">
           Fat Ideas
         </h1>
-        <button className="bg-fat-ideas text-white px-4 py-2 rounded text-4xl" onClick={handleToggle} >
+        {/* <button
+          className="bg-fat-ideas text-white px-4 py-2 rounded text-4xl"
+          onClick={handleToggle}
+        >
           New
-        </button>
-
-        {/* Modal 教程见：https://reacthustle.com/blog/how-to-implement-a-reusable-responsive-modal-in-react-with-daisyui */}
-
+        </button> */}
       </header>
+      <Modal open={open}>
+        <div className="card w-80 h-96 p-6 bg-white shadow-lg rounded-lg relative">
+          <button
+            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+            onClick={handleToggle}
+          >
+            <svg
+              className="w-6 h-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          <input
+            type="text"
+            className="input mb-4 mt-4"
+            placeholder="Idea Title"
+          />
+          <textarea
+            className="textarea mb-4"
+            placeholder="Description"
+            rows={4}
+          ></textarea>
+          <input type="text" className="input mb-4" placeholder="#tags" />
+          <button className="btn text-white yexy bg-fat-ideas hover:bg-fat-ideas mt-8">
+            Create
+          </button>
+        </div>
+      </Modal>
 
       <div className="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-3 mt-12">
         {cardsData.map((card, index) => (
@@ -135,6 +170,22 @@ export default function Home() {
           </div>
         </div>
       </div> */}
+      <button
+        className="fixed bottom-4 right-4 bg-fat-ideas text-white rounded-full w-14 h-14 flex items-center justify-center"
+        onClick={handleToggle}
+      >
+        <svg
+          className="w-6 h-6 text-white"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+      </button>
     </main>
   );
 }
