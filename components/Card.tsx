@@ -1,21 +1,26 @@
 // "use client";
 import React from "react";
 import Countdown from "./Countdown";
+import UpdateButton from "./UpdateButton";
 
 type CardProps = {
-  status: "countdown" | "archive" | "ship";
+  id: string;
+  status: "countdown" | "archive" | "ship" | "ready";
   countdownNumber?: number;
   title: string;
   description: string;
   tags: string[];
+  onUpdateSuccess: () => void;
 };
 
 const Card: React.FC<CardProps> = ({
+  id,
   status,
   countdownNumber,
   title,
   description,
   tags,
+  onUpdateSuccess,
 }) => {
   const getStatusContent = () => {
     switch (status) {
@@ -48,6 +53,13 @@ const Card: React.FC<CardProps> = ({
           >
             🚀
           </div>
+        );
+      case "ready":
+        return (
+          <UpdateButton
+            ideaId={id}
+            onUpdateSuccess={onUpdateSuccess}
+          ></UpdateButton>
         );
     }
   };
